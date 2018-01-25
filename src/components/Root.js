@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
+import Home from './routes/Home' 
 
 export default class Root extends Component{
   
   render(){
     return(
-      <h1>Root</h1>
+      <div>
+        <Route path="/" component={ Home } />
+      </div>
     );
   }
 }
