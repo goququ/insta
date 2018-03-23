@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
+import HomeTopBlock from '../common/HomeTopBlock'
+import ConnectedMainForm from '../../containers/ConnectedMainForm'
 
 export default class Home extends Component{
   
   render(){
     return(
-      <h2>Home page</h2>
+      <div>
+        <HomeTopBlock>
+          <ConnectedMainForm />
+        </HomeTopBlock>
+      </div>
     );
   }
 }
