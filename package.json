@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
@@ -17,11 +18,13 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
   },
+  "homepage": "http://goququ.github.io/insta",
   "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && rm -rf node_modules/gh-pages/.cache && gh-pages -b gh-pages -d build"
   }
 }
