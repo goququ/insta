@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Row, Container } from 'reactstrap';
 import Card from './Card'
 
 export default class ContentList extends Component {
@@ -12,9 +13,11 @@ export default class ContentList extends Component {
     const { data } = this.props
     console.log(data)
     return (
-      <div style={{ marginRight: -20}}>
-        { data.map( item => (<Card { ...item }/>)) }
-      </div>
+      <Container>
+        <Row style={{ marginRight: -20}}>
+          { data.map( item => (<Card { ...item }/>)) }
+        </Row>
+      </Container>
     )
   }
   

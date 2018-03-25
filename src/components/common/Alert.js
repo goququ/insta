@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { UncontrolledAlert } from 'reactstrap'
+import { Alert  } from 'reactstrap'
 
 const alertStyles = {
   position: 'fixed',
   top: 100,
   left: '50%',
-  transform: 'translateX(-50%)'
+  transform: 'translateX(-50%)',
+  cursor: 'pointer'
 }
 
-const Alert = ({ isSown=true, text='Simple string', type='danger' }) => {
-  return  <UncontrolledAlert color={ type } style={ alertStyles }>
-    { text }
-  </UncontrolledAlert>
+const MyAlert = ({ error, resetError }) => {
+  return <Alert color='danger' style={ alertStyles } isOpen={!!error} onClick={ resetError }>
+    { error || 'Неизвестная ошибка' }
+  </Alert>
 }
 
-Alert.propTypes = {
-  isSown: PropTypes.bool,
-  text: PropTypes.string,
-  type: PropTypes.string
+MyAlert.propTypes = {
+  error: PropTypes.string,
+  resetError: PropTypes.func
 }
 
-export default Alert
+export default MyAlert

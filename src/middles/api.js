@@ -30,10 +30,12 @@ const api = store => next => action => {
           store.dispatch(loadUserSucsess(data)) : 
           store.dispatch(loadUserError(error_message))
         })
-        .catch(err => store.dispatch(loadUserError(err)))
+        .catch(err => {
+          console.log(err)
+          store.dispatch(loadUserError(err.toString()))
+        })
       
-      next(action)
-      break;
+      return next(action)
       
     case LOAD_TAG:
       url = getRecentTagUrl(action.input)
@@ -46,7 +48,7 @@ const api = store => next => action => {
           store.dispatch(loadTagSucsess(data)) : 
           store.dispatch(loadTagError(error_message))
         })
-        .catch(err => store.dispatch(loadTagError(err)))
+        .catch(err => store.dispatch(loadUserError('Ошибка при загрузке тега')))
       
       next(action)
       break;

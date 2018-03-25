@@ -9,6 +9,8 @@ export const LOAD_TAG = 'insta/search/LOAD_TAG'
 export const LOAD_TAG_OK = 'insta/search/LOAD_TAG_OK'
 export const LOAD_TAG_ERR = 'insta/search/LOAD_TAG_ERR'
 
+export const RESET_ERROR = 'insta/search/RESET_ERROR'
+
 export const searchTypes = {
   TAG: 'TAG',
   USER: 'USER'
@@ -58,6 +60,12 @@ export function loadTagError(err){
   }
 }
 
+export function resetError(){
+  return{
+    type: RESET_ERROR
+  }
+}
+
 
 const initState = {
   type: searchTypes.USER,
@@ -96,6 +104,11 @@ const search = (state=initState, action) => {
         data: null,
         loading: false,
         error: action.err
+      }
+    case RESET_ERROR:
+      return {
+        ...state,
+        error: false
       }
     default:
       return state

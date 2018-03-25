@@ -4,8 +4,7 @@ import ConnectedMainForm from '../../containers/ConnectedMainForm'
 import PageContainer from '../common/PageContainer'
 import ConnectedLoader from '../../containers/ConnectedLoader'
 import ContentList from '../../containers/ConnectedContentList'
-// import { AUTH_URL } from '../../config'
-// import Alert from '../common/Alert'
+import ConnectedAlert from '../../containers/ConnectedAlert'
 
 export default class Home extends Component{
   
@@ -17,6 +16,7 @@ export default class Home extends Component{
         </HomeTopBlock>
         <ConnectedLoader />
         <ContentList />
+        <ConnectedAlert />
       </PageContainer>
     );
   }
