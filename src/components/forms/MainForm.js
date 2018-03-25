@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { ButtonGroup, Button, Collapse } from 'reactstrap';
+import PropTypes from 'prop-types'
+import { ButtonGroup, Button, Collapse } from 'reactstrap'
 import ReduxUserForm from '../../containers/ReduxUserForm'
 import ReduxTagForm from '../../containers/ReduxTagForm'
 
@@ -27,20 +28,29 @@ export default class MainForm extends Component {
   }
   
   render(){
+    
+    const { openForm } = this.state
+    const { loadUser, loadTag } = this.props
+    
     return(
       <div>
         <ButtonGroup style={{marginBottom: 30}}>
-          <Button color="info" onClick={this.showUserForm}>User</Button>
-          <Button color="info" onClick={this.showTegForm}>Teg</Button>
+          <Button color="info" onClick={this.showUserForm} outline={openForm === 'user'}>User</Button>
+          <Button color="info" onClick={this.showTegForm} outline={openForm === 'tag'}>Tag</Button>
         </ButtonGroup>
         
-        <Collapse isOpen={this.state.openForm === 'user'}>
-          <ReduxUserForm handleSubmit={ this.props.loadUser }/>
+        <Collapse isOpen={openForm === 'user'}>
+          <ReduxUserForm onSubmit={ values => loadUser(values.userID) }/>
         </Collapse>
-        <Collapse isOpen={this.state.openForm === 'tag'}>
-          <ReduxTagForm handleSubmit={ this.props.loadTag }/>
+        <Collapse isOpen={openForm === 'tag'}>
+          <ReduxTagForm onSubmit={ values => loadTag(values.tag) }/>
         </Collapse>
       </div>
     )
   }
+}
+
+MainForm.propTypes = {
+  loadUser: PropTypes.func,
+  loadTag: PropTypes.func
 }

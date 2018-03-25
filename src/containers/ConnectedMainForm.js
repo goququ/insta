@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import { loadUser, loadTag } from '../ducks/search'
 import MainForm from '../components/forms/MainForm'
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, state) => {
+  
   return{
     loadUser: (id) => {
       dispatch(loadUser(id))

@@ -1,4 +1,4 @@
 
 
-export const required = value => (value ? undefined : 'Required')
-export const number = value => value && isNaN(Number(value)) ? 'Must be a number' : undefined
+export const required = value => (value ? undefined : 'This field is required')
+export const number = value => value && isNaN(Number(value)) ? 'ID must be a number' : undefined
